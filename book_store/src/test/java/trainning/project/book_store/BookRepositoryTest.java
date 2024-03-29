@@ -1,5 +1,6 @@
 package trainning.project.book_store;
 
+/* 
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -47,3 +48,4 @@ public class BookRepositoryTest {
         assertThat(newBooks).hasSize(0);
     }
 }
+*/

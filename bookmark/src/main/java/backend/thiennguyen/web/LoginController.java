@@ -1,4 +1,4 @@
-package trainning.project.book_store.web;
+package backend.thiennguyen.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,11 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import trainning.project.book_store.domain.AppUser;
-import trainning.project.book_store.domain.AppUserRepository;
-import trainning.project.book_store.domain.SignupForm;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import backend.thiennguyen.bookmark.domain.AppUser;
+import backend.thiennguyen.bookmark.domain.AppUserRepository;
+import backend.thiennguyen.bookmark.domain.SignupForm;
 import jakarta.validation.Valid;
 
 

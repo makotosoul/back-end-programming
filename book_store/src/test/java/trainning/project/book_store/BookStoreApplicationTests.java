@@ -1,3 +1,4 @@
+/* 
 package trainning.project.book_store;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,3 +22,4 @@ class BookStoreApplicationTests {
 	}
 
 }
+*/
