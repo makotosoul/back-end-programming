@@ -15,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import trainning.project.book_store.web.UserDetailServiceImpl;
 
 
+
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig {

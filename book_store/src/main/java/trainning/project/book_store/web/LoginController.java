@@ -14,7 +14,7 @@ import trainning.project.book_store.domain.SignupForm;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
