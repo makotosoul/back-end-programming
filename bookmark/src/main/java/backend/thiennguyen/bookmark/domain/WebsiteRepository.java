@@ -4,6 +4,6 @@ import java.util.List;
 
 
 public interface WebsiteRepository extends CrudRepository<Website, Long>{
-    List<Website> findByName(String name);
+    List<Website> findByProjectId(Long projectId);
 
 }

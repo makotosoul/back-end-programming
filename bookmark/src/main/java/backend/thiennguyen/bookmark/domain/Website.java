@@ -10,9 +10,6 @@ public class Website {
     private String URL;
     private String note;
 
-    @ManyToOne
-    @JoinColumn(name = "categoryid")
-    private Category category;
 
     @ManyToOne
     @JoinColumn(name ="projectId")
@@ -20,12 +17,11 @@ public class Website {
 
     public Website () {}
 
-    public Website(String name, String URL, String note, Category category,Project project){
+    public Website(String name, String URL, String note,Project project){
         super();
         this.name = name;
         this.URL = URL;
         this.note = note;
-        this.category = category;
         this.project = project;
     }
 
@@ -45,9 +41,6 @@ public class Website {
     public String getNote(){
         return note;
     }
-    public Category getCategory() {
-        return category;
-    }
     public Project getProject(){
         return project;
     }
@@ -65,21 +58,12 @@ public class Website {
     public void setNote(String note){
         this.note = note;
     }
-    public void setCategory(Category category){
-        this.category = category;
-    }
     public void setProject(Project project){
         this.project = project;
     }
     @Override
     public String toString(){
-        if(this.category != null&& this.project !=null){
-            return "Website [ id ="+ getId()+", name ="+getName()+", url ="+getURL()+", note ="+getNote()+"category ="+getCategory()+"project ="+getProject()+" ]";
-        }
-        else if(this.category != null){
-            return "Website [ id ="+ getId()+", name ="+getName()+", url ="+getURL()+", note ="+getNote()+"category ="+getCategory()+" ]";
-        }
-        else if(this.project != null){
+        if(this.project != null){
             return "Website [ id ="+ getId()+", name ="+getName()+", url ="+getURL()+", note ="+getNote()+"project ="+getProject()+" ]";
         }
         else{

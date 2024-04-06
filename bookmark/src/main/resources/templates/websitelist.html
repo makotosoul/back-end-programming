@@ -9,38 +9,23 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 </head>
 
 <body>
-	<div class="container">
-		<div class="col-md-4">
-			<h1>Website bookmarking</h1>
-		</div>
-		<div class="col-md-4">
-			<i>Welcome <b sec:authentication="name"></b>, 
-			your role is <b sec:authentication="principal.authorities"></b>
-		</div>
-		<div class="col-md-4" style="padding:20px 0">
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
-			</form>
-		</div>
-	
+<h1 th:text ="${projectName}"></h1>	
 	<table>
 		<tr>
 			<th>Name</th>
 			<th>Links</th>
 			<th>Memos</th>
-			<th>Category</th>
 		</tr>
 		<tr th:each="website : ${websites}">
 			<td th:text="${website.name}"></td>
            <td><a th:href="@{${website.URL}}" th:text="${website.URL}"></a></td>
             <td th:text="${website.note}"></td>
-            <td th:text="${website.category.name}"></td>
 			<!--<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
 			-->
 		</tr>
 	</table>
-	<a href="/add">Add website</a>
+	<a href="/websiteadd">Add website</a>
 </div>
 </body>
 

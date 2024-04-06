@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title>Website Bookmarking</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-4">
+            <h1>Website bookmarking</h1>
+        </div>
+        <div class="col-md-4">
+            <i>Welcome <b sec:authentication="name"></b>,
+                your role is <b sec:authentication="principal.authorities"></b>
+        </div>
+        <div class="col-md-4" style="padding:20px 0">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+            </form>
+        </div>
+
+        <ul th:each="project : ${projects}">
+            <li><a th:href="@{'/websitelist/'+${project.id}}" th:text="${project.name}"></a></li>
+            <!--<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
+			-->
+        </ul>
+        <a href="/projectadd">Add project</a>
+    </div>
+</body>
+
+</html>

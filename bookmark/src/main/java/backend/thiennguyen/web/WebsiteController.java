@@ -1,13 +1,18 @@
 package backend.thiennguyen.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import backend.thiennguyen.bookmark.domain.CategoryRepository;
+import backend.thiennguyen.bookmark.domain.Project;
 import backend.thiennguyen.bookmark.domain.ProjectRepository;
 import backend.thiennguyen.bookmark.domain.Website;
 import backend.thiennguyen.bookmark.domain.WebsiteRepository;
+import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,14 +28,17 @@ public class WebsiteController {
     @Autowired
     private WebsiteRepository repository;
     @Autowired
-    private CategoryRepository Crepository;
-    @Autowired
     private ProjectRepository Prepository;
+    //@Autowired
+    //private CategoryRepository Crepository;
 
 
-    @GetMapping("/websitelist")
+    @GetMapping("/websitelist/{id}")
     public String websitelist(@PathVariable("id") Long projectId,Model model) {
-        model.addAttribute("websites", repository.findAllById(Prepository.findById(projectId)));
+        Project project =Prepository.findById(projectId).orElseThrow(() -> new EntityNotFoundException("project not found"));
+        List<Website> websites = project.getWebsites();
+        model.addAttribute("projectName", project.getName().toUpperCase());
+        model.addAttribute("websites", websites);
         return "websitelist";
     }
 
@@ -41,10 +49,10 @@ public class WebsiteController {
     }
     
 
-    @GetMapping("/add")
+    @GetMapping("/websiteadd")
     public String websiteadd(Model model) {
         model.addAttribute("website", new Website());
-        model.addAttribute("categories", Crepository.findAll());
+        //model.addAttribute("categories", Crepository.findAll());
         return "websiteadd";
     }
 

@@ -20,19 +20,14 @@ public class Project {
     private Long projectId;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name ="categoryid")
-    private Category category;
-
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<Website> websites;
 
     public Project() {}
-    public Project(String name, Category category){
+    public Project(String name){
         super();
         this.name = name;
-        this.category = category;
     }
     
     //getter 
@@ -42,9 +37,6 @@ public class Project {
 
     public String getName(){
         return name;
-    }
-    public Category getCategory() {
-        return category;
     }
     public List<Website> getWebsites(){
         return websites;
@@ -58,14 +50,11 @@ public class Project {
     public void setName(String name){
         this.name = name;
     }
-    public void setCategory(Category category){
-        this.category = category;
-    }
     public void setWebsites(List<Website> websites) {
         this.websites = websites;
     }
     @Override
     public String toString() {
-        return "Project [id = "+getId()+", name = "+getName()+", category = "+getCategory()+" ]";
+        return "Project [id = "+getId()+", name = "+getName()+"]";
     }
 }
